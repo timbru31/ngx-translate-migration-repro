@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
+import { TranslocoModule } from '@ngneat/transloco';
 
 import { AppComponent } from './app.component';
 import { Observable, from } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslocoRootModule } from './transloco-root.module';
 
 export function createTranslateLoader() {
   return new RequireTranslateLoader();
@@ -18,7 +21,9 @@ export function createTranslateLoader() {
         useFactory: createTranslateLoader
       }
     }),
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    TranslocoRootModule
   ],
   providers: [],
   bootstrap: [AppComponent]
